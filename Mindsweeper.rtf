@@ -1,0 +1,30 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 public class MineSweeper\
+\{	private int[][] myTruth;\
+	private boolean[][] myShow;\
+	\
+	public void cellPicked(int row, int col)\
+	\{	if( inBounds(row, col) && !myShow[row][col] )\
+		\{	myShow[row][col] = true;\
+		\
+			if( myTruth[row][col] == 0)\
+			\{	for(int r = -1; r <= 1; r++)\
+					for(int c = -1; c <= 1; c++)\
+						cellPicked(row + r, col + c);\
+			\}	\
+		\}\
+	\}\
+	\
+	public boolean inBounds(int row, int col)\
+	\{	return 0 <= row && row < myTruth.length && 0 <= col && col < myTruth[0].length;\
+	\}\
+\}\
+}
